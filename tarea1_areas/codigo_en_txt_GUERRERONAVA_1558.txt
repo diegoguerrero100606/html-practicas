@@ -1,0 +1,308 @@
+GUERRERO NAVA DIEGO OBED 1558 :D
+
+LO MANDO TANTO EN ARCHIVO COMO EN TXT PARA SU MAYOR COMODIDAD PROFE, BUEN DÍA
+
+////////HTML
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Áreas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>    
+    <h1>Selecciona una figura:</h1>
+    <div class="figuras">
+        <div class="figura" onclick="mostrarFormulario('cuadrado')">
+            <img src="cuadrado.jpg" alt="Cuadrado">
+            <h2>Cuadrado</h2>
+        </div>
+        <div class="figura" onclick="mostrarFormulario('rectangulo')">
+            <img src="rectangulo.jpg" alt="Rectángulo">
+            <h2>Rectángulo</h2>
+        </div>
+        <div class="figura" onclick="mostrarFormulario('triangulo')">
+            <img src="triangulo.jpg" alt="Triángulo">
+            <h2>Triángulo</h2>
+        </div>
+        <div class="figura" onclick="mostrarFormulario('circulo')">
+            <img src="circulo.jpg" alt="Circulo">
+            <h2>Círculo</h2>
+        </div>
+         <div class="figura" onclick="mostrarFormulario('trapecio')">
+            <img src="trapecio.jpg" alt="Trapecio">
+            <h2>Trapecio</h2>
+        </div>
+    </div>
+
+    <div id="form-cuadrado" class="formulario">
+        <h2>Área del Cuadrado</h2>
+        <label for="lado">Lado:</label>
+        <input type="number" id="lado" placeholder="Introduce el lado">
+        <button onclick="calcularAreaCuadrado()">Calcular área</button>
+    </div>
+   
+    <div id="form-rectangulo" class="formulario">
+        <h2>Área del Rectángulo</h2>
+        <label for="baseRectangulo">Base:</label>
+        <input type="number" id="baseRectangulo" placeholder="Introduce la base">
+        <label for="alturaRectangulo">Altura:</label>
+        <input type="number" id="alturaRectangulo" placeholder="Introduce la altura">
+        <button onclick="calcularAreaRectangulo()">Calcular área</button>
+    </div>
+
+    <div id="form-triangulo" class="formulario">
+        <h2>Área del Triángulo</h2>
+        <label for="baseTriangulo">Base:</label>
+        <input type="number" id="baseTriangulo" placeholder="Introduce la base">
+        <label for="alturaTriangulo">Altura:</label>
+        <input type="number" id="alturaTriangulo" placeholder="Introduce la altura">
+        <button onclick="calcularAreaTriangulo()">Calcular área</button>
+    </div>
+
+    <div id="form-circulo" class="formulario">
+        <h2>Área del Círculo</h2>
+        <label for="radioCirculo">Radio:</label>
+        <input type="number" id="radioCirculo" placeholder="Introduce el radio">
+        <button onclick="calcularAreaCirculo()">Calcular área</button>
+    </div>
+
+     <div id="form-trapecio" class="formulario">
+        <h2>Área del Trapecio</h2>
+        <label for="baseMTrapecio">Base Mayor:</label>
+        <input type="number" id="baseMTrapecio" placeholder="Introduce la base mayor">
+        <label for="basemTrapecio">Base Menor:</label>
+        <input type="number" id="basemTrapecio" placeholder="Introduce la base menor">
+        <label for="alturaTrapecio">Altura:</label>
+        <input type="number" id="alturaTrapecio" placeholder="Introduce la altura">
+        <button onclick="calcularAreaTrapecio()">Calcular área</button>
+    </div>
+
+
+    <div id="resultado"></div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+//////////////////////////////////////////////CSS
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #131513;
+    padding: 30px;
+}
+
+h1 {
+    color: white;
+
+}
+
+.figuras {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.figura {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 200px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s, box-shadow 0.3s ease;
+}
+
+.figura.seleccionada {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.figura:hover {
+    transform: scale(1.05);
+}
+
+.figura img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.figura h2 {
+    margin: 10px 0;
+}
+
+
+/* Los formularios comienzan ocultos */
+
+.formulario {
+    display: none;
+
+    background-color: white;
+
+    width: 350px;
+
+    margin: 20px auto;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+.formulario input {
+    display: block;
+
+    width: 90%;
+
+    padding: 10px;
+
+    margin: 10px auto 20px;
+
+    font-size: 16px;
+}
+
+
+.formulario button {
+    padding: 10px 20px;
+
+    background-color: #007bff;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+}
+
+
+.formulario button:hover {
+    background-color: #0056b3;
+}
+
+
+#resultado {
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #008000;
+
+    margin-top: 25px;
+}
+
+/////////////////JS
+
+function mostrarFormulario(figura) {
+    // Ocultar formularios
+    document.getElementById("form-cuadrado").style.display = "none";
+    document.getElementById("form-rectangulo").style.display = "none";
+    document.getElementById("form-triangulo").style.display = "none";
+    document.getElementById("form-circulo").style.display = "none";
+    document.getElementById("form-trapecio").style.display = "none";
+
+    // Quitar la selección de todas las figuras
+    const figuras = document.querySelectorAll(".figura");
+    //para mostrar que fue seleccionada, un ligero resaltado en comparacion de las
+    //demas opciones
+    figuras.forEach(function(elemento) 
+    { 
+        elemento.classList.remove("seleccionada");
+    });
+
+    // Mostrar formulario seleccionado
+    if (figura === "cuadrado") {
+        document.getElementById("form-cuadrado").style.display = "block";
+        figuras[0].classList.add("seleccionada");
+    }  
+    else if (figura === "rectangulo") {
+        document.getElementById("form-rectangulo").style.display = "block";
+        figuras[1].classList.add("seleccionada");
+    }
+     else if (figura === "triangulo") {
+        document.getElementById("form-triangulo").style.display = "block";
+        figuras[2].classList.add("seleccionada");
+    }
+     else if (figura === "circulo") {
+        document.getElementById("form-circulo").style.display = "block";
+        figuras[3].classList.add("seleccionada");
+    }
+     else if (figura === "trapecio") {
+        document.getElementById("form-trapecio").style.display = "block";
+        figuras[4].classList.add("seleccionada");
+    }
+    //Borra el resultado anterior
+    document.getElementById("resultado").innerHTML = "";
+}
+
+
+function calcularArea(tipo, x, y) {
+
+    let area;
+
+    if (tipo === "cuadrado") {
+        area = x * y;
+    }
+    else if (tipo === "rectangulo") {
+        area = x * y;
+    }
+    else if (tipo === "triangulo") {
+        area = (x * y) / 2;
+    }    
+    else if (tipo === "circulo") {
+        area = y*x**2 ;
+    } 
+    return area;
+}
+function calcularArea2(tipo, x, y, z) {
+
+    let area;
+
+    if (tipo === "trapecio") {
+        area = ((x + y)/2)*z;
+    }
+    return area;
+}
+
+function calcularAreaCuadrado() {
+    const lado = Number(document.getElementById("lado").value);
+    const area = calcularArea("cuadrado", lado, lado);
+    document.getElementById("resultado").innerHTML = "El área del cuadrado es: " + area;
+}
+
+function calcularAreaRectangulo() {
+    const base = Number(document.getElementById("baseRectangulo").value);
+    const altura = Number(document.getElementById("alturaRectangulo").value);
+    const area = calcularArea("rectangulo", base, altura);
+    document.getElementById("resultado").innerHTML = "El área del rectángulo es: " + area;
+}
+function calcularAreaTriangulo() {
+    const base = Number(document.getElementById("baseTriangulo").value);
+    const altura = Number(document.getElementById("alturaTriangulo").value);
+    const area = calcularArea("triangulo", base, altura);
+    document.getElementById("resultado").innerHTML = "El área del triángulo es: " + area;
+}
+function calcularAreaCirculo() {
+    const radio = Number(document.getElementById("radioCirculo").value);
+    const area = calcularArea("circulo",radio, pi=3.1416 );
+    document.getElementById("resultado").innerHTML = "El área del circulo es: " + area;
+}
+function calcularAreaTrapecio() {
+    const baseM = Number(document.getElementById("baseMTrapecio").value);
+    const basem = Number(document.getElementById("basemTrapecio").value);
+    const altura = Number(document.getElementById("alturaTrapecio").value);    
+    const area = calcularArea2("trapecio",baseM,basem,altura );
+    document.getElementById("resultado").innerHTML = "El área del circulo es: " + area;
+}
+
