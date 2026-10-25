@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>pruebas</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="cabecera">
+		<h1>Consulta tu curp</h1>
+	</div>
+	<div class="formulario">
+		<div class="grid">
+			<div class="item">
+			<label for="Nombre">Nombre(s): </label>
+			<input type="text" id="Nombre">
+			</div>
+
+			<div class="item">
+			<label for="ApellidoP">Apellido Paterno:</label>
+			<input type="text" id="ApellidoP">
+			</div>
+
+			<div class="item">
+			<label for="ApellidoM">Apellido Materno: </label>
+			<input type="text" id="ApellidoM">
+			</div>
+
+			<div class="item">
+			<label for="DiaN">Día de nacimiento:</label>
+			<select name="DiaN" id="DiaN"></select>
+			</div>
+
+			<div class="item">
+			<label for="MesN">Mes de nacimiento:</label>
+			<select name="MesN" id="MesN"></select>
+			</div>
+
+			<div class="item">
+    		<label for="estado">Estado de nacimiento:</label>
+    		<select id="estado" name="estado"></select>
+			</div>
+
+			<div class="item">
+			<label for="AnoN">Año de nacimiento:</label>
+			<select name="AnoN" id="AnoN"></select>
+			</div>
+
+			<div class="item">
+			<label for="Sexo">Sexo:</label>
+			<select name="Sexo" id="Sexo">
+				<option value="M">Mujer</option>
+				<option value="H">Hombre</option>
+			</select>
+			</div>
+
+			<div class="boton">
+			<button class="enviar">Obtener mi CURP</button>
+			</div>
+		</div>
+		<div class="resultadoCURP">
+			<h2 id="curpResultado"></h2>
+		</div>
+	</div>
+	<script src="java.js"></script>	
+</body>
+	
+</html>
